@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title> Membaca file Json</title>
+       
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+         <!-- Kode Java Script -->
+         <script type="text/javascript">
+            $(function(){
+                //mengambil data dari file json
+                $.get('headline.json',function(obj){
+                    var str = "<table border=1 align=center>";
+                    str +="<tr><td>No</td><td class='tables'>Judul Headline</td><td class='tables'>Kategori</td><td class='tables'>Waktu Publish</td><td class='tables'>Waktu Scraping</td></tr>";
+                    $.each(obj,function(n,data){
+                        str +="<tr><td>" + (n+1) + "</td>";
+                        str +="<td>" + data.Judul + "</td>";
+                        str +="<td class='tables'>" + data.Kategori + "</td>";
+                        str +="<td class='tables'>" + data.WaktuPublish + "</td>";
+                        str +="<td class='tables'>" + data.WaktuScraping + "</td></tr>";
+                    });
+                    str +="</table>";
+                    $('#headline_json').html(str);
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <!--Menampilkan Judul-->
+        <h1> Headline Republika Online</h1>
+        <h3> Nama : Akmal Faqih Fachrezy</h3>
+        <h3> NIM  : 211524035</h3>
+        <!-- Menampilkan headline-->
+        <div id="headline_json"></div>
+    </body>
+</html>
